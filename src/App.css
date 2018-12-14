@@ -1,0 +1,75 @@
+.App {
+  background-color: #c7c7c7;
+  padding-bottom: 20px;
+}
+
+.container {
+
+  margin-top: 3%;
+  display: -webkit-flex;
+  display:         flex;
+  -webkit-flex-flow: row;
+          flex-flow: row;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  text-align: center;
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  width: 100%
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.Card-list{
+  margin-right: 10px;
+  flex-flow: column;
+  -webkit-flex: 1 6 20%;
+  flex: 1 6 20%;
+  -webkit-order: 1;
+  order: 1;
+}
+
+.search-button {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.add-buttons {
+  margin: 10px 0 0 10px
+}
+
+.Card-info{
+  text-align: center;
+  border-radius: 20px;
+  background-color: rgba(156, 156, 156, 0.507);
+
+  flex-flow: column;
+  -webkit-flex: 3 1 50%;
+  flex: 3 1 40%;
+  -webkit-order: 2;
+  order: 2;
+}
+
+.Deck-container {
+  margin-left: 10px;
+  flex-flow: column;
+  -webkit-flex: 1 6 30%;
+  flex: 1 6 20%;
+  -webkit-order: 3;
+    order: 3;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
