@@ -20,6 +20,9 @@ class App extends React.Component<{},
       sets: [],
       deckCards: [],
     };
+  }
+
+  componentWillMount(){
     this.loadSets();
   }
   

@@ -27,9 +27,29 @@ class Card extends React.Component<any, {}> {
                     <dt className="card-info-item col-lg-7">{this.props.selectedCard.artist ? "Artist" : null}</dt>
                     <dd className="card-info-item col-lg-5">{this.props.selectedCard.artist}</dd>
                 </div>
+                <ShowRuling selectedCard ={this.props.selectedCard}/>
             </div>
         )
-    } 
+    }
+}
+
+function ShowRuling(props:any) {
+    if (props.selectedCard.rulings) {
+        return (
+            <div className="col-log-12 rulings">
+                <h5>{props.selectedCard.rulings ? "Rulings" : null}</h5>
+                <ol>
+                    {props.selectedCard.rulings.map((rule: any, index:number) =>
+                    <li key={index}>
+                        <small><strong>{rule.date}</strong> - {rule.text}</small>
+                    </li>
+                    )}
+                </ol>
+            </div>
+        )
+    } else {
+        return null;
+    }
 }
 
 export default Card;
