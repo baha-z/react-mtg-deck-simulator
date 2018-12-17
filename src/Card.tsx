@@ -12,8 +12,8 @@ class Card extends React.Component<any, {}> {
                     <h4>{this.props.selectedCard.name}</h4>
                     <dt className="card-info-item col-lg-7">{this.props.selectedCard.manaCost ? "Mana Cost" : null}</dt>
                     <dd className="card-info-item col-lg-5">{this.props.selectedCard.manaCost}</dd>
-                    <dt className="card-info-item col-lg-7">{this.props.selectedCard.originalType ? "Types" : null}</dt>
-                    <dd className="card-info-item col-lg-5">{this.props.selectedCard.originalType}</dd>
+                    <dt className="card-info-item col-lg-12">{this.props.selectedCard.originalType ? "Types" : null}</dt>
+                    <dd className="card-info-item col-lg-12">{this.props.selectedCard.originalType}</dd>
                     <dt className="card-info-item col-lg-12">{this.props.selectedCard.text ? "Card Text" : null}</dt>
                     <dd className="card-info-item col-lg-12"><em>{this.props.selectedCard.text}</em></dd>
                     <dt className="card-info-item col-lg-12">{this.props.selectedCard.flavor ? "Flavor Text" : null}</dt>

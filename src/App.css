@@ -1,5 +1,4 @@
 .App {
-  background-color: #c7c7c7;
   padding-bottom: 20px;
 }
 
@@ -10,6 +9,10 @@
   display:         flex;
   -webkit-flex-flow: row;
           flex-flow: row;
+}
+
+.Mtg-logo {
+  height: 80px;
 }
 
 .App-logo {

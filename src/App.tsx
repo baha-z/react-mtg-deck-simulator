@@ -1,12 +1,14 @@
 import * as React from 'react';
 import './App.css';
 import logo from './logo.svg';
+import mtg_logo from './Magicthegathering-logo.svg'
 import Deck from './Deck';
 import Card from './Card';
 
 const mtg = require('mtgsdk');
 class App extends React.Component<{}, 
-{ inputValue: string, searchResult: [],selectedSet: any, selectedCard: any, sets: any, deckCards: any }> {
+{ inputValue: string, searchResult: any ,selectedSet: any, 
+  selectedCard: any, sets: any, deckCards: any }> {
 
   constructor(props: any) {
     super(props);
@@ -16,7 +18,7 @@ class App extends React.Component<{},
       selectedCard: {},
       selectedSet: '',
       sets: [],
-      deckCards: []
+      deckCards: [],
     };
     this.loadSets();
   }
@@ -26,28 +28,28 @@ class App extends React.Component<{},
     return (
       <div className="App">
         <div className="App-header">
-          <img className="App-logo" src={logo} alt=""/>
+          <img className="Mtg-logo" src={mtg_logo} alt="mtg_logo"/>
+          <img className="App-logo" src={logo} alt="react-logo"/>
         </div>
         <div className="container">
-
           <div className="Card-list">
             <input placeholder="Card Name" className="form-control" value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)}/>
             <select className="form-control" onChange={evt => this.handleChange(evt)}>
               {this.state.sets.map((set:any) => 
-                <option value={set.code}>{set.name}</option>)}
+                <option key={set.code} value={set.code}>{set.name}</option>)}
             </select>
             <button className="btn btn-success search-button" onClick= {() => this.searchCard()}>Search</button>
-            <ul>
-              {this.state.searchResult.map((card: any) =>
-                <li>
-                  <a onClick={() => this.selectCard(card)}>{card.name.length > 18 ? card.name.substr(0, 17) + '...' : card.name}</a>
-                  <div className="btn-group add-buttons" role="group" aria-label="add-cards">
-                    <button type="button" className="btn btn-sm btn-secondary" onClick={()=> this.updateDeck(true, card)}>+</button>
-                    <button type="button" className="btn btn-sm btn-secondary" onClick={()=> this.updateDeck(false, card)}>-</button>
-                  </div>
-                </li>
-              )}
-            </ul>
+              <ul>
+                {this.state.searchResult.map((card: any) =>
+                  <li key={card.id}>
+                    <a onClick={() => this.selectCard(card)}>{card.name.length > 18 ? card.name.substr(0, 17) + '...' : card.name}</a>
+                    <div className="btn-group add-buttons" role="group" aria-label="add-cards">
+                      <button type="button" className="btn btn-sm btn-secondary" onClick={()=> this.updateDeck(true, card)}>+</button>
+                      <button type="button" className="btn btn-sm btn-secondary" onClick={()=> this.updateDeck(false, card)}>-</button>
+                    </div>
+                  </li>
+                )}
+              </ul>            
           </div>
 
           <div className="Card-info">
@@ -106,18 +108,18 @@ class App extends React.Component<{},
         deckCards.splice(index,1,updatedCard);
       }
     }
-    
+
     this.setState({ 
-      deckCards: deckCards
+      deckCards: deckCards,
     });
   }
 
   searchCard() {
     mtg.card.where({ name: this.state.inputValue, set: this.state.selectedSet })
     .then((cards: any) => {
-        this.setState({
-          searchResult: cards
-        });
+      this.setState({
+        searchResult: cards
+      });   
     })
   }
 
